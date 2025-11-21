@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Number Guessing Game{% endblock %}
+
+{% block content %}
+<h>Number Guessing Game</h>
+{% if not win_status %}
+<form method="post" action="/number-guesser/cpu/submit">
+    <div class="form-group">
+        <input type="number" name="guessed_number"/>
+        <button type="submit">Submit</button>
+    <div>
+</form>
+{% endif %}
+<div class="container">
+    <h2> CPU Response </h2>
+    {% if win_status %}
+        <p>{{ cpu_response }}</p>
+        <p> Would you like to try again?</p>
+        <a href="/number-guesser/cpu"><button>Yes</button></a><a href="/"><button>No</button></a>
+    {% else %}
+        <p>{{ cpu_response }}</p>
+    {% endif %}
+</div>
+{% endblock %}
